@@ -395,6 +395,10 @@
     {
       "packageName": "@micro/service-a",
       "projectFolder": "services/service-A"
+    },
+    {
+      "packageName": "@micro/service-b",
+      "projectFolder": "services/service-B"
     }
   ]
 }

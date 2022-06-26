@@ -3,26 +3,25 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  productionBrowserSourceMaps: true,
   webpack: (config, options) => {
-    config.module.rules = config.module.rules.map(rule => {
-      // `create-react-app` uses `babel-loader` in oneOf
-      if (rule.oneOf) {
-        rule.oneOf.map(oneOfRule => {
-          if (
-            oneOfRule.loader &&
-            oneOfRule.loader.indexOf('babel-loader') !== -1
-          ) {
-            if (oneOfRule.hasOwnProperty('options')) {
-              if (oneOfRule.options.hasOwnProperty('sourceMaps')) {
-                // eslint-disable-next-line no-param-reassign
-                oneOfRule.options.sourceMaps = true;
-              }
-            }
-          }
-        });
-      }
-      return rule;
+    // config.module.rules.forEach(config => {
+    //   if (config.oneOf) {
+    //     config.oneOf.forEach(config => console.log('config', config));
+    //   }
+    // });
+
+    config.module.rules.push({
+      test: /\.(js|ts|tsx|jsx)$/,
+      enforce: 'pre',
+      use: ['source-map-loader'],
+      exclude: [
+        path.resolve(__dirname, '..', '..', 'common', 'temp', 'node_modules'),
+      ],
+      // include: [path.resolve(__dirname, 'node_modules', '@micro')],
     });
+
+    console.log('config.plugins', config.plugins);
 
     return config;
   },

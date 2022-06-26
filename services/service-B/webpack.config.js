@@ -2,7 +2,7 @@ const { resolve, join } = require('path');
 const DeclarationBundlerPlugin = require('declaration-bundler-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   devtool: 'source-map',
   entry: {
     main: join(__dirname, 'src', 'index.tsx'),
@@ -11,7 +11,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   output: {
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [

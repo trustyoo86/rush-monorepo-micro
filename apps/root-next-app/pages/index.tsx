@@ -5,6 +5,8 @@ import styles from '../styles/Home.module.css';
 import { Thing } from '@micro/service-a';
 import { Test } from '@micro/service-b';
 
+console.log('Test', Test);
+
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>

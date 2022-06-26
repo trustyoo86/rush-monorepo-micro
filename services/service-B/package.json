@@ -1,7 +1,7 @@
 {
   "name": "@micro/service-b",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "webpack"
   },
   "author": "trustyoo86",
   "license": "ISC",
